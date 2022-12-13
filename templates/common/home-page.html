@@ -1,0 +1,76 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block page_content %}
+
+    <form class="searchbar" method="get" action="{% url 'home page' %}">
+
+        <div class="card">
+            <div class="card-body">
+                <div class="pagination">
+                    <strong>{{ search_form.car_type }}</strong>&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary"
+                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div>
+            {% for car in page_object %}
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{ car.image_url }}" class="card-img-top" alt="car image">
+                            <div class="card-body">
+                                <h5>{{ car.model }}</h5>
+                                <a href="{% url 'car details' slug=car.slug user_id=car.user.id %}"
+                                   class="btn btn-primary"
+                                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            {% empty %}
+                <h2>Sorry, there is no cars from the selected type!</h2>
+            {% endfor %}
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="pagination">
+                    <span class="step-links">
+                    {% if page_object.has_previous %}
+                        <a href="?page=1" class="btn btn-primary"
+                           style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">&laquo; First</a>
+                        <a href="?page={{ page_object.previous_page_number }}" class="btn btn-primary"
+                           style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">Previous</a>
+                    {% endif %}
+                        <span class="current">
+                        Page {{ page_object.number }} of {{ page_object.paginator.num_pages }}
+                    </span>
+                        {% if page_object.has_next %}
+                            <a href="?page={{ page_object.next_page_number }}" class="btn btn-primary"
+                               style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">Next</a>
+                            <a href="?page={{ page_object.paginator.num_pages }}" class="btn btn-primary"
+                               style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">Last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        {% csrf_token %}
+    </form>
+
+{% endblock %}
+
+
+
+
+
+
+

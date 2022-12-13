@@ -1,0 +1,32 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block page_content %}
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'car_showroom/images/neutral_pics/empty_user_icon.jpg' %}" class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Profile Details</strong></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Owned cars</strong>: {{ cars_count }}</li>
+                    <li class="list-group-item"><strong>Received likes</strong>: {{ likes_count }}</li>
+                    <li class="list-group-item"><strong>Email</strong>: {{ object.email }}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{% url 'edit user' pk=object.pk %}" class="btn btn-primary"
+                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">Edit</a>
+                    <a href="{% url 'delete user' pk=object.pk %}" class="btn btn-primary"
+                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">Delete</a>
+                    <a href="{% url 'logout' %}" class="btn btn-primary"
+                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

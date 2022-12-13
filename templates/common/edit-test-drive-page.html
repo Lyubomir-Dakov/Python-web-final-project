@@ -1,0 +1,32 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block page_content %}
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'car_showroom/images/cars/test-drive.jpg' %}"
+                     class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Edit</strong></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <form action="{% url 'edit test drive' car_id=car.pk %}" method="post">
+                            <strong>{{ form.as_p }}</strong>
+                            <button type="submit" class="btn btn-primary"
+                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">
+                                Edit
+                            </button>
+                            <a href="javascript:history.back()" class="btn btn-primary"
+                               style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">Back</a>
+                            {% csrf_token %}
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

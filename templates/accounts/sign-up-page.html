@@ -1,0 +1,36 @@
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block page_content %}
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'car_showroom/images/cars/Penske-Wynn-Ferrari-Maserati--5-.jpg' %}"
+                     class="card-img-top"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Register</strong></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <form method="post" action="{% url 'register' %}">
+                            <p><strong>Email: </strong>{{ form.email }}</p>
+                            <p><strong>Password: </strong>{{ form.password1 }}</p>
+                            <p><strong>Reenter password: </strong>{{ form.password2 }}</p>
+                            <button type="submit" class="btn btn-primary"
+                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">
+                                Register
+                            </button>
+                            {% csrf_token %}
+                        </form>
+                    </li>
+                    <li class="list-group-item">
+                        Have an account? <a href="{% url 'login' %}">Log in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

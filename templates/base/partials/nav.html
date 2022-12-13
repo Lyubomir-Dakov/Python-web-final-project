@@ -1,0 +1,41 @@
+{% load static %}
+
+<div class="p-3 mb-2 bg-dark text-white">
+    <nav class="navbar navbar-expand-lg" style="background-color: #D9CFF7;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home page' %}"><img width="50px"
+                                                                      src="{% static 'car_showroom/images/logo/showroom_logo.jpg' %}"
+                                                                      alt="img1"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="position-absolute top-50 end-0 translate-middle-y">
+                    <ul class="navbar-nav">
+                        <li class="fw-semibold">
+                            <a class="nav-link active" aria-current="page" href="{% url 'about page' %}">About</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li class="fw-semibold">
+                                <a class="nav-link active" href="{% url 'car add' %}">Add Car</a>
+                            </li>
+                            <li class="fw-semibold">
+                                <a class="nav-link active"
+                                   href="{% url 'user details' pk=request.user.pk %}">Profile</a>
+                            </li>
+                        {% else %}
+                            <li class="fw-semibold">
+                                <a class="nav-link active" href="{% url 'register' %}">Sign up</a>
+                            </li>
+                            <li class="fw-semibold">
+                                <a class="nav-link active" href="{% url 'login' %}">Sign in</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+

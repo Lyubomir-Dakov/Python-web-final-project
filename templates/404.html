@@ -1,0 +1,16 @@
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block page_content %}
+    <div>
+        <h1>
+            Uh oh,<br> something broke.
+        </h1>
+        <h3>Error 404 - page not found.</h3>
+        <a href="{% url 'home page' %}" class="btn btn-primary"
+           style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">
+            Home
+        </a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block page_content %}
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'car_showroom/images/error-pics/user-error.jpg' %}" class="card-img-top" alt="error image">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Error!</strong></h5>
+                    <p class="card-text">There is another user with this email already!</p>
+                    <a href="{% url 'home page' %}" class="btn btn-primary"
+                       style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">
+                        Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

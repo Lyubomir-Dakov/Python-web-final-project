@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'car_showroom/css/bootstrap.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'car_showroom/images/favicon/favicon-32x32.png' %}">
+    <title>Super Cars</title>
+</head>
+
+<body style="background-color:#D9CFF7">
+
+<header>
+    {% include 'base/partials/nav.html' %}
+</header>
+
+<main>
+    {% block page_content %}
+    {% endblock %}
+</main>
+
+<footer class="position-absolute bottom-0 start-50 translate-middle-x">
+    <div class="position-relative">
+        <div class="fw-semibold">
+        <span class="footer-section">
+
+			2022 DAKOV PROJECT FOR PYTHON WEB MODULE
+
+		</span>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

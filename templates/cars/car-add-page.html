@@ -1,0 +1,49 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block page_content %}
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <div class="card" style="width: 800px;">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Add Car</strong></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <form action="{% url 'car add' %}" method="post" class="row g-3 needs-validation">
+                            <div class="col-md-4">
+                                <p><strong>Type: <br>{{ form.type }}</strong></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Model: </strong>{{ form.model }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Year of production: </strong>{{ form.year_of_production }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Price: </strong>{{ form.price }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Horse power: </strong>{{ form.horse_power }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Image URL: </strong>{{ form.image_url }}</p>
+                            </div>
+                            <div class="col-mb-4">
+                                <p><strong>Description: </strong>{{ form.description }}</p>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary"
+                                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .90rem;">
+                                    Add car
+                                </button>
+                            </div>
+                            {% csrf_token %}
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
